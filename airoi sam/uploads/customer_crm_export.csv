@@ -1,0 +1,16 @@
+customer_id,customer_name,email,phone_number,pan_number,aadhaar_number,dob,address_city
+CUST-2026-1001,Aarav Sharma,aarav.sharma@gmail.com,+91 98201 44521,ABCPS1234F,317388379387,1992-04-15,Mumbai
+CUST-2026-1002,Diya Patel,diya.patel@yahoo.com,9876543210,BNZPD5678A,551017579869,1988-11-23,Bengaluru
+CUST-2026-1003,Rohan Mehta,rohan.mehta@outlook.com,+91 97112 88349,CHYPK9012M,936231891970,1995-07-08,New Delhi
+CUST-2026-1004,Priya Nair,priya.nair@corp.in,99450 12847,DFGPN3456L,915009997649,1983-02-19,Hyderabad
+CUST-2026-1005,Vikram Singh,vikram.singh@gmail.com,98401 55672,EHKPS7890K,757725278116,1990-09-30,Pune
+CUST-2026-1006,Ananya Iyer,ananya.iyer@zmail.com,+91 99887 76655,FJLPA2345J,429764680702,1996-12-14,Chennai
+CUST-2026-1007,Karan Verma,karan.verma@hotmail.com,96543 21098,GKMPV6789H,846141501514,1987-05-25,Kolkata
+CUST-2026-1008,Neha Joshi,neha.j@gmail.com,98230 11984,HNQPB0123G,747650452532,1994-08-11,Ahmedabad
+CUST-2026-1009,Arjun Reddy,arjun.reddy@tech.co,97654 32100,IPRPC4567F,XXXX-XXXX-1654,1989-03-03,Jaipur
+CUST-2026-1010,Pooja Gupta,pooja.gupta@gmail.com,+91 98112 23344,JTRPG8901E,XXXX-XXXX-5615,1998-10-21,Chandigarh
+CUST-2026-1011,Aditya Rao,aditya.rao@proton.me,99001 12233,KUVPR2345D,XXXX-XXXX-3556,1991-06-17,Lucknow
+CUST-2026-1012,Sneha Kulkarni,sneha.k@gmail.com,98760 54321,LVWPK6789C,XXXX-XXXX-4416,1985-01-28,Kochi
+CUST-2026-1013,Rahul Das,rahul.das@icloud.com,98221 44556,MWXPD0123B,XXXX-XXXX-9421,1993-07-19,Indore
+CUST-2026-1014,Meera Pillai,meera.p@yahoo.in,99334 55667,NXYPM4567A,XXXX-XXXX-9855,1997-04-05,Bhopal
+CUST-2026-1015,Siddharth Jain,siddharth.j@gmail.com,+91 98877 66554,OYZPJ8901Z,XXXX-XXXX-2163,1986-09-12,Nagpur

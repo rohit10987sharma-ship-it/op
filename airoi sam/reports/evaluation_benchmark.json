@@ -1,0 +1,471 @@
+{
+  "macro_precision": 1.0,
+  "macro_recall": 1.0,
+  "macro_f1": 1.0,
+  "micro_precision": 1.0,
+  "micro_recall": 1.0,
+  "micro_f1": 1.0,
+  "total_evaluated_fields": 44,
+  "total_true_pii": 31,
+  "total_predicted_pii": 31,
+  "class_metrics": {
+    "PID": {
+      "class_id": "PID",
+      "class_name": "Personal identity",
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 38,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 6
+    },
+    "CNT": {
+      "class_id": "CNT",
+      "class_name": "Contact information",
+      "true_positives": 4,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 40,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 4
+    },
+    "GID": {
+      "class_id": "GID",
+      "class_name": "Government identifiers",
+      "true_positives": 7,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 37,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 7
+    },
+    "FIN": {
+      "class_id": "FIN",
+      "class_name": "Financial information",
+      "true_positives": 8,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 36,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 8
+    },
+    "LOC": {
+      "class_id": "LOC",
+      "class_name": "Location / address",
+      "true_positives": 6,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 38,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "support": 6
+    }
+  },
+  "confusion_details": [
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "user_id",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "customer_name",
+      "true_class": "PID",
+      "predicted_class": "PID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "email_address",
+      "true_class": "CNT",
+      "predicted_class": "CNT",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "phone_number",
+      "true_class": "CNT",
+      "predicted_class": "CNT",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "date_of_birth",
+      "true_class": "PID",
+      "predicted_class": "PID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "gender",
+      "true_class": "PID",
+      "predicted_class": "PID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "residential_address",
+      "true_class": "LOC",
+      "predicted_class": "LOC",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "pin_code",
+      "true_class": "LOC",
+      "predicted_class": "LOC",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "account_status",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "transaction_id",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "bank_account_number",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "ifsc_code",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "card_number",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "upi_id",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "amount_inr",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.405,
+      "match": true
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "settlement_channel",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "verification_id",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "aadhaar_number",
+      "true_class": "GID",
+      "predicted_class": "GID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "pan_number",
+      "true_class": "GID",
+      "predicted_class": "GID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "passport_number",
+      "true_class": "GID",
+      "predicted_class": "GID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "voter_id",
+      "true_class": "GID",
+      "predicted_class": "GID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "driving_licence",
+      "true_class": "GID",
+      "predicted_class": "GID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "kyc_audit_flag",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "emp_id",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "employee_name",
+      "true_class": "PID",
+      "predicted_class": "PID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "age",
+      "true_class": "PID",
+      "predicted_class": "PID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "pan_card",
+      "true_class": "GID",
+      "predicted_class": "GID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "salary_account_no",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "bank_ifsc",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "department",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.4,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "dispatch_id",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "delivery_address",
+      "true_class": "LOC",
+      "predicted_class": "LOC",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "postal_pin",
+      "true_class": "LOC",
+      "predicted_class": "LOC",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "geo_coords",
+      "true_class": "LOC",
+      "predicted_class": "LOC",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "order_upi",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "package_weight_kg",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "vault_id",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "aadhaar_card",
+      "true_class": "GID",
+      "predicted_class": "GID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "caller_phone",
+      "true_class": "CNT",
+      "predicted_class": "CNT",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "contact_email",
+      "true_class": "CNT",
+      "predicted_class": "CNT",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "card_number",
+      "true_class": "FIN",
+      "predicted_class": "FIN",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "birth_date",
+      "true_class": "PID",
+      "predicted_class": "PID",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "geo_coordinates",
+      "true_class": "LOC",
+      "predicted_class": "LOC",
+      "confidence": 1.0,
+      "match": true
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "http_code",
+      "true_class": "not personal data",
+      "predicted_class": "not personal data",
+      "confidence": 0.0,
+      "match": true
+    }
+  ]
+}

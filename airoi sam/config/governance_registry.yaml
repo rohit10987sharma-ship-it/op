@@ -1,0 +1,200 @@
+# PrivLens Data Governance & RoPA Registry
+# Declarations of Business Purposes, Retention Schedules, and Data Stewardship
+# Calibrated for the 5 Official PS-019 Personal Data Classes
+
+organization: "Enterprise Global Corp"
+governance_version: "2026.3"
+last_audit_date: "2026-10-15"
+
+# Declared Processing Purposes Library
+purposes:
+  - purpose_id: "PURP_ORDER_FULFILLMENT"
+    name: "Customer Order Fulfillment & Shipping"
+    description: "Processing necessary for physical delivery and communication with customers regarding purchases."
+    declared_by: "Operations Team"
+
+  - purpose_id: "PURP_PAYMENT_SETTLEMENT"
+    name: "Payment Processing & Financial Ledger"
+    description: "Processing required for billing, dispute resolution, tax compliance, and anti-fraud checks."
+    declared_by: "Finance & Accounting"
+
+  - purpose_id: "PURP_HR_PAYROLL"
+    name: "Employee Payroll & Statutory Benefits"
+    description: "Maintenance of employment records, tax withholdings, and statutory benefits administration."
+    declared_by: "People & Culture (HR)"
+
+  - purpose_id: "PURP_KYC_COMPLIANCE"
+    name: "Statutory KYC & Customer Verification"
+    description: "Identity verification mandated by financial regulations and anti-money laundering (AML) laws."
+    declared_by: "Compliance & Legal"
+
+  - purpose_id: "PURP_SEC_AUDIT"
+    name: "Information Security & Access Auditing"
+    description: "Tracking authentication events, preventing unauthorized intrusions, and security forensics."
+    declared_by: "Information Security Team"
+
+# Field-Level Registrations across Data Sources
+registered_fields:
+  # Customer Signups CSV
+  "customer_signups.csv":
+    "customer_name":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: 36
+      retention_trigger: "Account Deletion"
+      data_owner: "CRM Engineering"
+      status: "ACTIVE"
+
+    "email_address":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: 36
+      retention_trigger: "Account Deletion"
+      data_owner: "CRM Engineering"
+      status: "ACTIVE"
+
+    "phone_number":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: 24
+      retention_trigger: "Order Completion"
+      data_owner: "CRM Engineering"
+      status: "ACTIVE"
+
+    "residential_address":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: null # Missing retention to test flagging
+      retention_trigger: null
+      data_owner: "Logistics Team"
+      status: "INCOMPLETE"
+
+    "pin_code":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: 36
+      retention_trigger: "Account Deletion"
+      data_owner: "Logistics Team"
+      status: "ACTIVE"
+
+    "gender":
+      purpose_id: null # Missing purpose to test flagging
+      retention_period_months: 12
+      retention_trigger: "Account Review"
+      data_owner: "Analytics Team"
+      status: "UNLINKED_PURPOSE"
+
+    # date_of_birth is deliberately omitted from registry to test UNREGISTERED_SHADOW_DATA
+
+  # KYC Verification Records CSV
+  "kyc_verification_records.csv":
+    "aadhaar_number":
+      purpose_id: "PURP_KYC_COMPLIANCE"
+      retention_period_months: 60
+      retention_trigger: "Statutory Audit Window"
+      data_owner: "Compliance Ops"
+      status: "ACTIVE"
+
+    "pan_number":
+      purpose_id: "PURP_KYC_COMPLIANCE"
+      retention_period_months: 60
+      retention_trigger: "Statutory Audit Window"
+      data_owner: "Tax Compliance"
+      status: "ACTIVE"
+
+    "passport_number":
+      purpose_id: "PURP_KYC_COMPLIANCE"
+      retention_period_months: null # Missing retention to test flagging
+      retention_trigger: null
+      data_owner: "Risk Team"
+      status: "INCOMPLETE"
+
+    # voter_id and driving_licence are deliberately omitted to test UNREGISTERED_SHADOW_DATA
+
+  # Digital Payments Log CSV
+  "digital_payments_log.csv":
+    "bank_account_number":
+      purpose_id: "PURP_PAYMENT_SETTLEMENT"
+      retention_period_months: 84
+      retention_trigger: "Financial Year End"
+      data_owner: "Banking Ops"
+      status: "ACTIVE"
+
+    "ifsc_code":
+      purpose_id: "PURP_PAYMENT_SETTLEMENT"
+      retention_period_months: 84
+      retention_trigger: "Financial Year End"
+      data_owner: "Banking Ops"
+      status: "ACTIVE"
+
+    "card_number":
+      purpose_id: null # Missing purpose
+      retention_period_months: 24
+      retention_trigger: "Card Expiration"
+      data_owner: "Payment Gateway"
+      status: "UNLINKED_PURPOSE"
+
+    # upi_id is deliberately omitted to test UNREGISTERED_SHADOW_DATA
+
+  # Enterprise Database (SQLite)
+  "enterprise_data.db:employees":
+    "employee_name":
+      purpose_id: "PURP_HR_PAYROLL"
+      retention_period_months: 84
+      retention_trigger: "Termination of Employment"
+      data_owner: "HR People Ops"
+      status: "ACTIVE"
+
+    "age":
+      purpose_id: "PURP_HR_PAYROLL"
+      retention_period_months: 84
+      retention_trigger: "Termination of Employment"
+      data_owner: "HR Benefits"
+      status: "ACTIVE"
+
+    "pan_card":
+      purpose_id: "PURP_HR_PAYROLL"
+      retention_period_months: 84
+      retention_trigger: "Statutory Tax Filing"
+      data_owner: "HR Finance"
+      status: "ACTIVE"
+
+    "salary_account_no":
+      purpose_id: "PURP_HR_PAYROLL"
+      retention_period_months: 84
+      retention_trigger: "Termination of Employment"
+      data_owner: "Finance Payroll"
+      status: "ACTIVE"
+
+    "bank_ifsc":
+      purpose_id: "PURP_HR_PAYROLL"
+      retention_period_months: 84
+      retention_trigger: "Termination of Employment"
+      data_owner: "Finance Payroll"
+      status: "ACTIVE"
+
+  "enterprise_data.db:delivery_dispatch":
+    "delivery_address":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: 12
+      retention_trigger: "Delivery Confirmation"
+      data_owner: "Logistics Fleet"
+      status: "ACTIVE"
+
+    "postal_pin":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: 12
+      retention_trigger: "Delivery Confirmation"
+      data_owner: "Logistics Fleet"
+      status: "ACTIVE"
+
+    "geo_coords":
+      purpose_id: "PURP_ORDER_FULFILLMENT"
+      retention_period_months: null # Missing retention
+      retention_trigger: null
+      data_owner: "Fleet Telemetry"
+      status: "INCOMPLETE"
+
+    "order_upi":
+      purpose_id: "PURP_PAYMENT_SETTLEMENT"
+      retention_period_months: 24
+      retention_trigger: "Dispute Window"
+      data_owner: "Settlement Desk"
+      status: "ACTIVE"
+
+  # legacy_unindexed_vault is completely omitted (Shadow Table)

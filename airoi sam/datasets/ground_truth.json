@@ -1,0 +1,324 @@
+{
+  "metadata": {
+    "description": "Benchmark ground truth for PS-019 5 Personal Data Classes evaluation",
+    "version": "2.0.0",
+    "classes": {
+      "PID": "Personal identity",
+      "CNT": "Contact information",
+      "GID": "Government identifiers",
+      "FIN": "Financial information",
+      "LOC": "Location / address",
+      "not personal data": "not personal data"
+    }
+  },
+  "fields": [
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "user_id",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "customer_name",
+      "is_pii": true,
+      "true_class": "PID"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "email_address",
+      "is_pii": true,
+      "true_class": "CNT"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "phone_number",
+      "is_pii": true,
+      "true_class": "CNT"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "date_of_birth",
+      "is_pii": true,
+      "true_class": "PID"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "gender",
+      "is_pii": true,
+      "true_class": "PID"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "residential_address",
+      "is_pii": true,
+      "true_class": "LOC"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "pin_code",
+      "is_pii": true,
+      "true_class": "LOC"
+    },
+    {
+      "source": "customer_signups.csv",
+      "table": null,
+      "column": "account_status",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "verification_id",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "aadhaar_number",
+      "is_pii": true,
+      "true_class": "GID"
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "pan_number",
+      "is_pii": true,
+      "true_class": "GID"
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "passport_number",
+      "is_pii": true,
+      "true_class": "GID"
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "voter_id",
+      "is_pii": true,
+      "true_class": "GID"
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "driving_licence",
+      "is_pii": true,
+      "true_class": "GID"
+    },
+    {
+      "source": "kyc_verification_records.csv",
+      "table": null,
+      "column": "kyc_audit_flag",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "transaction_id",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "bank_account_number",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "ifsc_code",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "card_number",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "upi_id",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "amount_inr",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "digital_payments_log.csv",
+      "table": null,
+      "column": "settlement_channel",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "emp_id",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "employee_name",
+      "is_pii": true,
+      "true_class": "PID"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "age",
+      "is_pii": true,
+      "true_class": "PID"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "pan_card",
+      "is_pii": true,
+      "true_class": "GID"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "salary_account_no",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "bank_ifsc",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "employees",
+      "column": "department",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "dispatch_id",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "delivery_address",
+      "is_pii": true,
+      "true_class": "LOC"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "postal_pin",
+      "is_pii": true,
+      "true_class": "LOC"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "geo_coords",
+      "is_pii": true,
+      "true_class": "LOC"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "order_upi",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "delivery_dispatch",
+      "column": "package_weight_kg",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "vault_id",
+      "is_pii": false,
+      "true_class": "not personal data"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "aadhaar_card",
+      "is_pii": true,
+      "true_class": "GID"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "caller_phone",
+      "is_pii": true,
+      "true_class": "CNT"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "contact_email",
+      "is_pii": true,
+      "true_class": "CNT"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "card_number",
+      "is_pii": true,
+      "true_class": "FIN"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "birth_date",
+      "is_pii": true,
+      "true_class": "PID"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "geo_coordinates",
+      "is_pii": true,
+      "true_class": "LOC"
+    },
+    {
+      "source": "enterprise_data.db",
+      "table": "legacy_unindexed_vault",
+      "column": "http_code",
+      "is_pii": false,
+      "true_class": "not personal data"
+    }
+  ]
+}

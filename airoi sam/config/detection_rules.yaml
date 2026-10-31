@@ -1,0 +1,302 @@
+# PrivLens PII Detection Rules Configuration
+# Defines the 5 Official PS-019 Personal Data Classes and Configurable Evidence Checklist Rules
+
+version: "2.0.0"
+
+# Global detection thresholds
+thresholds:
+  sample_size_per_column: 100       # Max sample values to profile per column
+  min_non_empty_values: 3           # Minimum non-empty values required to run profiling
+  default_min_match_ratio: 0.35     # 35% of sample values must match pattern
+  classification_confidence_cutoff: 0.50 # Below this, marked as not personal data
+
+# The 5 Official PS-019 Personal Data Classes
+data_classes:
+  - id: "PID"
+    name: "Personal identity"
+    description: "Personal identity fields: name, date of birth, gender, age."
+    subtypes: ["name", "date_of_birth", "gender", "age"]
+    sensitivity_level: "HIGH"
+
+  - id: "CNT"
+    name: "Contact information"
+    description: "Contact information fields: email address, phone number."
+    subtypes: ["email_address", "phone_number"]
+    sensitivity_level: "MEDIUM"
+
+  - id: "GID"
+    name: "Government identifiers"
+    description: "Official government-issued IDs: Aadhaar, PAN, passport, voter ID, driving licence numbers."
+    subtypes: ["aadhaar", "pan", "passport", "voter_id", "driving_licence"]
+    sensitivity_level: "CRITICAL"
+
+  - id: "FIN"
+    name: "Financial information"
+    description: "Financial & payment credentials: bank account number, IFSC, card number, UPI ID."
+    subtypes: ["bank_account_number", "ifsc", "card_number", "upi_id"]
+    sensitivity_level: "CRITICAL"
+
+  - id: "LOC"
+    name: "Location / address"
+    description: "Location and address fields: postal address, PIN code, geo-coordinates."
+    subtypes: ["postal_address", "pin_code", "geo_coordinates"]
+    sensitivity_level: "MEDIUM"
+
+# Detection Rules Catalog
+rules:
+  # ============================================================================
+  # Class 1: Personal identity (PID) - name, date of birth, gender, age
+  # ============================================================================
+  - rule_id: "RULE_PID_NAME"
+    class_id: "PID"
+    subtype: "name"
+    name: "Person Full/First/Last Name"
+    header_patterns:
+      - "(?i)(^name$|full_?name|first_?name|last_?name|surname|customer_?name|patient_?name|client_?name|employee_?name|contact_?person|person_?name|^person$)"
+    value_patterns:
+      - "^[A-Z][a-z]+(?:\\s+[A-Z][a-z]+)+$"
+      - "^[A-Z][a-z]{1,25}$"
+    min_sample_match_ratio: 0.40
+    header_weight: 0.60
+    value_weight: 0.40
+
+  - rule_id: "RULE_PID_DOB"
+    class_id: "PID"
+    subtype: "date_of_birth"
+    name: "Date of Birth (DOB)"
+    header_patterns:
+      - "(?i)(^dob$|birth_?date|date_?of_?birth|born_on|bday|birth_day)"
+    value_patterns:
+      - "^(?:19|20)\\d{2}[-/](?:0[1-9]|1[0-2])[-/](?:0[1-9]|[12]\\d|3[01])$"
+      - "^(?:0[1-9]|[12]\\d|3[01])[-/](?:0[1-9]|1[0-2])[-/](?:19|20)\\d{2}$"
+      - "^(?:0[1-9]|1[0-2])[-/](?:0[1-9]|[12]\\d|3[01])[-/](?:19|20)\\d{2}$"
+    min_sample_match_ratio: 0.40
+    header_weight: 0.55
+    value_weight: 0.45
+
+  - rule_id: "RULE_PID_GENDER"
+    class_id: "PID"
+    subtype: "gender"
+    name: "Gender Identity"
+    header_patterns:
+      - "(?i)(^gender$|^sex$|gender_identity|demographic_sex)"
+    value_patterns:
+      - "(?i)^(male|female|non-binary|genderqueer|transgender|other|prefer_not_to_say|m|f|nb)$"
+    min_sample_match_ratio: 0.50
+    header_weight: 0.50
+    value_weight: 0.50
+
+  - rule_id: "RULE_PID_AGE"
+    class_id: "PID"
+    subtype: "age"
+    name: "Person Age"
+    header_patterns:
+      - "(?i)(^age$|patient_?age|customer_?age|employee_?age|person_?age)"
+    value_patterns:
+      - "^(?:[1-9]|[1-9][0-9]|1[01][0-9]|120)$"
+    min_sample_match_ratio: 0.70
+    header_weight: 0.65
+    value_weight: 0.35
+
+  # ============================================================================
+  # Class 2: Contact information (CNT) - email address, phone number
+  # ============================================================================
+  - rule_id: "RULE_CNT_EMAIL"
+    class_id: "CNT"
+    subtype: "email_address"
+    name: "Email Address"
+    header_patterns:
+      - "(?i)(email|e_mail|mail_addr|contact_email|user_email|work_email|lead_email)"
+    value_patterns:
+      - "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.35
+    value_weight: 0.65
+
+  - rule_id: "RULE_CNT_PHONE"
+    class_id: "CNT"
+    subtype: "phone_number"
+    name: "Telephone / Mobile Number"
+    header_patterns:
+      - "(?i)(phone|telephone|mobile|cell|contact_no|tel_num|caller_phone|mobile_no)"
+    value_patterns:
+      - "^(?:\\+?\\d{1,3}[-.\\s]?)?\\(?\\d{3}\\)?[-.\\s]?\\d{3}[-.\\s]?\\d{4}$"
+      - "^(?:\\+?91[-\\s]?)?[6-9]\\d{9}$"
+      - "^\\+[1-9]\\d{7,14}$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.50
+    value_weight: 0.50
+
+  # ============================================================================
+  # Class 3: Government identifiers (GID) - Aadhaar, PAN, passport, voter ID, driving licence
+  # ============================================================================
+  - rule_id: "RULE_GID_AADHAAR"
+    class_id: "GID"
+    subtype: "aadhaar"
+    name: "Aadhaar Number (UIDAI)"
+    header_patterns:
+      - "(?i)(aadhaar|aadhar|uidai|uid_no|aadhaar_num|aadhaar_card)"
+    value_patterns:
+      - "^[2-9]\\d{3}\\s?\\d{4}\\s?\\d{4}$"
+    validator: "valid_aadhaar"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.45
+    value_weight: 0.55
+
+  - rule_id: "RULE_GID_PAN"
+    class_id: "GID"
+    subtype: "pan"
+    name: "Permanent Account Number (Indian PAN)"
+    header_patterns:
+      - "(?i)(^pan$|pan_no|pan_num|pan_card|tax_pan|permanent_account_number)"
+    value_patterns:
+      - "^[A-Z]{5}[0-9]{4}[A-Z]$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.45
+    value_weight: 0.55
+
+  - rule_id: "RULE_GID_PASSPORT"
+    class_id: "GID"
+    subtype: "passport"
+    name: "Passport Number"
+    header_patterns:
+      - "(?i)(passport|passport_no|passport_num|travel_doc_id)"
+    value_patterns:
+      - "^[A-PR-WY][1-9]\\d{7,8}$"
+      - "^[A-Z0-9]{8,9}$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.50
+    value_weight: 0.50
+
+  - rule_id: "RULE_GID_VOTER_ID"
+    class_id: "GID"
+    subtype: "voter_id"
+    name: "Voter ID / EPIC Number"
+    header_patterns:
+      - "(?i)(voter|voter_id|epic_no|voter_card|election_card)"
+    value_patterns:
+      - "^[A-Z]{3}[0-9]{7}$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.50
+    value_weight: 0.50
+
+  - rule_id: "RULE_GID_DRIVING_LICENCE"
+    class_id: "GID"
+    subtype: "driving_licence"
+    name: "Driving Licence Number"
+    header_patterns:
+      - "(?i)(driving_licen[sc]e|dl_no|dl_num|licen[sc]e_no|driver_licen[sc]e)"
+    value_patterns:
+      - "^[A-Z]{2}[-\\s]?[0-9]{2}[-\\s]?[0-9]{11}$"
+      - "^[A-Z]{2}[0-9]{13}$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.50
+    value_weight: 0.50
+
+  - rule_id: "RULE_GID_SSN"
+    class_id: "GID"
+    subtype: "ssn_national_id"
+    name: "Social Security / National Identifier"
+    header_patterns:
+      - "(?i)(^ssn$|soc.*sec|social_security|nat_id|national_identifier)"
+    value_patterns:
+      - "^(?!000|666|9\\d{2})\\d{3}[- ]?(?!00)\\d{2}[- ]?(?!0000)\\d{4}$"
+    min_sample_match_ratio: 0.30
+    header_weight: 0.45
+    value_weight: 0.55
+
+  # ============================================================================
+  # Class 4: Financial information (FIN) - bank account number, IFSC, card number, UPI ID
+  # ============================================================================
+  - rule_id: "RULE_FIN_CARD_NUMBER"
+    class_id: "FIN"
+    subtype: "card_number"
+    name: "Payment Card Number (PAN / CC)"
+    header_patterns:
+      - "(?i)(card_num|credit_card|debit_card|cc_number|card_no|account_card|pan_number)"
+    value_patterns:
+      - "^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\\d{3})\\d{11})$"
+      - "^(?:[0-9]{4}[-\\s]?){3}[0-9]{4}$"
+    validator: "luhn_checksum"
+    min_sample_match_ratio: 0.30
+    header_weight: 0.35
+    value_weight: 0.65
+
+  - rule_id: "RULE_FIN_BANK_ACCOUNT"
+    class_id: "FIN"
+    subtype: "bank_account_number"
+    name: "Bank Account Number / IBAN"
+    header_patterns:
+      - "(?i)(account_no|bank_account|acc_num|bank_acct|bban|bank_account_iban)"
+    value_patterns:
+      - "^[A-Z]{2}\\d{2}[A-Z0-9]{11,30}$"
+      - "^\\d{9,18}$"
+    min_sample_match_ratio: 0.30
+    header_weight: 0.45
+    value_weight: 0.55
+
+  - rule_id: "RULE_FIN_IFSC"
+    class_id: "FIN"
+    subtype: "ifsc"
+    name: "Indian Financial System Code (IFSC)"
+    header_patterns:
+      - "(?i)(ifsc|ifsc_code|bank_ifsc|branch_ifsc)"
+    value_patterns:
+      - "^[A-Z]{4}0[A-Z0-9]{6}$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.45
+    value_weight: 0.55
+
+  - rule_id: "RULE_FIN_UPI"
+    class_id: "FIN"
+    subtype: "upi_id"
+    name: "Unified Payments Interface (UPI ID / VPA)"
+    header_patterns:
+      - "(?i)(upi|upi_id|vpa|upi_vpa|payment_upi)"
+    value_patterns:
+      - "^[a-zA-Z0-9.\\-_]{2,49}@[a-zA-Z]{2,64}$"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.45
+    value_weight: 0.55
+
+  # ============================================================================
+  # Class 5: Location / address (LOC) - postal address, PIN code, geo-coordinates
+  # ============================================================================
+  - rule_id: "RULE_LOC_POSTAL_ADDRESS"
+    class_id: "LOC"
+    subtype: "postal_address"
+    name: "Physical Postal Address / Street"
+    header_patterns:
+      - "(?i)(address|street|addr_line|home_address|billing_address|shipping_address|residential_address)"
+    value_patterns:
+      - "^\\d{1,5}\\s+([A-Za-z0-9.\\s]{3,30})\\s+(?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Drive|Dr|Lane|Ln|Court|Ct|Way)\\.?$"
+      - "(?i)(?:street|road|nagar|colony|sector|block|layout|floor|apt|apartment)"
+    min_sample_match_ratio: 0.25
+    header_weight: 0.65
+    value_weight: 0.35
+
+  - rule_id: "RULE_LOC_PIN_CODE"
+    class_id: "LOC"
+    subtype: "pin_code"
+    name: "Postal PIN Code / ZIP Code"
+    header_patterns:
+      - "(?i)(pin_?code|pincode|postal_?pin|postal_?code|^zip$|zip_?code|^pin$)"
+    value_patterns:
+      - "^[1-9][0-9]{5}$"
+      - "^\\d{5}(?:-\\d{4})?$"
+    min_sample_match_ratio: 0.50
+    header_weight: 0.55
+    value_weight: 0.45
+
+  - rule_id: "RULE_LOC_GEO_COORDS"
+    class_id: "LOC"
+    subtype: "geo_coordinates"
+    name: "Geographical Coordinates (Latitude / Longitude)"
+    header_patterns:
+      - "(?i)(coordinates|geo_coords|lat_long|latitude_longitude|geolocation|gps_coords)"
+    value_patterns:
+      - "^-?([1-8]?\\d(?:\\.\\d+)?|90(?:\\.0+)?),\\s*-?(180(?:\\.0+)?|(?:(?:1[0-7]\\d)|(?:[1-9]?\\d))(?:\\.\\d+)?)$"
+    validator: "valid_geo_coords"
+    min_sample_match_ratio: 0.35
+    header_weight: 0.45
+    value_weight: 0.55

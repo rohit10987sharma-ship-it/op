@@ -1,0 +1,187 @@
+/* Custom CSS for PrivLens Dashboard */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.tab-btn.active {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+/* ========================================================================== */
+/* LIGHT / BRIGHT THEME OVERRIDES                                             */
+/* ========================================================================== */
+body.light-theme {
+  background-color: #f8fafc !important; /* Slate 50 */
+  color: #0f172a !important;            /* Slate 900 */
+}
+
+body.light-theme ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+body.light-theme ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+body.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Header & Nav */
+body.light-theme header {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-theme .tab-btn {
+  color: #475569 !important;
+}
+body.light-theme .tab-btn:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+body.light-theme .tab-btn.active {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Cards & Containers */
+body.light-theme .bg-slate-800,
+body.light-theme .bg-slate-800\/80,
+body.light-theme .bg-slate-800\/40 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06) !important;
+}
+
+/* Inner Boxes & Sub-surfaces */
+body.light-theme .bg-slate-900,
+body.light-theme .bg-slate-900\/80,
+body.light-theme .bg-slate-950,
+body.light-theme .bg-slate-950\/80,
+body.light-theme .bg-slate-950\/50,
+body.light-theme .bg-slate-950\/40 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Legal Boundary Banner */
+body.light-theme .bg-indigo-950\/70 {
+  background-color: #eff6ff !important;
+  border-color: #bfdbfe !important;
+  color: #1e40af !important;
+}
+body.light-theme .text-indigo-200 {
+  color: #1e3a8a !important;
+}
+
+/* Typography Overrides */
+body.light-theme .text-white {
+  color: #0f172a !important;
+}
+body.light-theme .text-slate-100,
+body.light-theme .text-slate-200,
+body.light-theme .text-slate-300 {
+  color: #1e293b !important;
+}
+body.light-theme .text-slate-400 {
+  color: #64748b !important;
+}
+body.light-theme .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Borders & Dividers */
+body.light-theme .border-slate-800,
+body.light-theme .border-slate-700,
+body.light-theme .border-slate-700\/60 {
+  border-color: #e2e8f0 !important;
+}
+body.light-theme .divide-slate-700\/60 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+/* Table Specifics */
+body.light-theme table thead {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border-color: #cbd5e1 !important;
+}
+body.light-theme table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Form Controls & Inputs */
+body.light-theme input,
+body.light-theme select,
+body.light-theme textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+body.light-theme input:focus,
+body.light-theme select:focus,
+body.light-theme textarea:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 1px #0284c7 !important;
+}
+
+/* Buttons */
+body.light-theme #btn-theme-toggle,
+body.light-theme .group button {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+}
+body.light-theme #btn-theme-toggle:hover,
+body.light-theme .group button:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Dropdowns & Menus */
+body.light-theme .group-hover\:block {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+}
+body.light-theme .group-hover\:block a {
+  color: #334155 !important;
+}
+body.light-theme .group-hover\:block a:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Modals */
+body.light-theme #modal-evidence,
+body.light-theme #modal-upload {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+body.light-theme #modal-evidence > div,
+body.light-theme #modal-upload > div {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Footer */
+body.light-theme footer {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #64748b !important;
+}
