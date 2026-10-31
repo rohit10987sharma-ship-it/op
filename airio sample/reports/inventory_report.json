@@ -1,0 +1,1950 @@
+{
+  "metadata": {
+    "tool": "PrivLens PII Discovery & Privacy Evidence Inventory Engine",
+    "version": "1.0.0",
+    "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review.",
+    "total_fields_scanned": 44,
+    "total_candidate_pii_fields": 31,
+    "total_evidence_gaps": 15
+  },
+  "inventory": [
+    {
+      "field_id": "customer_signups.csv::user_id",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "user_id",
+        "data_type": "int64",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::customer_name",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "customer_name",
+        "data_type": "object",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": true,
+        "candidate_class_id": "PID",
+        "candidate_class_name": "Personal identity",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_PID_NAME",
+            "rule_name": "Person Full/First/Last Name",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Person Full/First/Last Name | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "Si***ma",
+          "An***gh",
+          "Ad***er",
+          "Aa***dy"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": 36,
+        "retention_trigger": "Account Deletion",
+        "data_owner": "CRM Engineering",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::email_address",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "email_address",
+        "data_type": "object",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": true,
+        "candidate_class_id": "CNT",
+        "candidate_class_name": "Contact information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_CNT_EMAIL",
+            "rule_name": "Email Address",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Email Address | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          },
+          {
+            "rule_id": "RULE_LOC_POSTAL_ADDRESS",
+            "rule_name": "Physical Postal Address / Street",
+            "matched_by_header": true,
+            "matched_by_value": false,
+            "sample_match_count": 0,
+            "sample_total_count": 100,
+            "match_ratio": 0.0,
+            "confidence_contribution": 0.455,
+            "details": "Rule: Physical Postal Address / Street | Header Pattern Match: True | Sample Match: 0/100 (0.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "s***4@enterprise.net",
+          "a***5@example.com",
+          "a***6@company.org",
+          "a***9@example.com"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": 36,
+        "retention_trigger": "Account Deletion",
+        "data_owner": "CRM Engineering",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::phone_number",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "phone_number",
+        "data_type": "object",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": true,
+        "candidate_class_id": "CNT",
+        "candidate_class_name": "Contact information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_CNT_PHONE",
+            "rule_name": "Telephone / Mobile Number",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Telephone / Mobile Number | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "+91--****-****-0711",
+          "+91--****-****-0204",
+          "+91--****-****-5579",
+          "+91--****-****-1066"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": 24,
+        "retention_trigger": "Order Completion",
+        "data_owner": "CRM Engineering",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::date_of_birth",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "date_of_birth",
+        "data_type": "object",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": true,
+        "candidate_class_id": "PID",
+        "candidate_class_name": "Personal identity",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_PID_DOB",
+            "rule_name": "Date of Birth (DOB)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Date of Birth (DOB) | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "19***04",
+          "19***08",
+          "19***03",
+          "20***27"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "customer_signups.csv::date_of_birth",
+          "title": "Unregistered Candidate PII in customer_signups.csv",
+          "description": "Field 'date_of_birth' was identified as candidate personal data (Personal identity, confidence: 100%) across 150 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::gender",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "gender",
+        "data_type": "object",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": true,
+        "candidate_class_id": "PID",
+        "candidate_class_name": "Personal identity",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_PID_GENDER",
+            "rule_name": "Gender Identity",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Gender Identity | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "***",
+          "Pr***ay",
+          "Pr***ay",
+          "No***ry"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": 12,
+        "retention_trigger": "Account Review",
+        "data_owner": "Analytics Team",
+        "governance_status": "UNLINKED_PURPOSE"
+      },
+      "gaps": [
+        {
+          "gap_type": "MISSING_PURPOSE",
+          "severity": "HIGH",
+          "field_identifier": "customer_signups.csv::gender",
+          "title": "Missing Declared Purpose for gender",
+          "description": "Field 'gender' is registered under customer_signups.csv but has no declared business processing purpose.",
+          "human_action_recommendation": "Privacy Steward Action: Assign and validate a declared business purpose prior to lawful processing verification."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::residential_address",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "residential_address",
+        "data_type": "object",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": true,
+        "candidate_class_id": "LOC",
+        "candidate_class_name": "Location / address",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_LOC_POSTAL_ADDRESS",
+            "rule_name": "Physical Postal Address / Street",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Physical Postal Address / Street | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "614,-****-****-or 3",
+          "613,-****-****-or 1",
+          "109,-****-****-r 23",
+          "601,-****-****-r 46"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": "Logistics Team",
+        "governance_status": "INCOMPLETE"
+      },
+      "gaps": [
+        {
+          "gap_type": "MISSING_RETENTION",
+          "severity": "HIGH",
+          "field_identifier": "customer_signups.csv::residential_address",
+          "title": "Missing Retention Schedule for residential_address",
+          "description": "Field 'residential_address' contains candidate personal data without a defined retention limit or deletion trigger.",
+          "human_action_recommendation": "Data Governance Action: Formulate data retention schedule and disposal trigger in accordance with corporate data retention policy."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::pin_code",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "pin_code",
+        "data_type": "int64",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": true,
+        "candidate_class_id": "LOC",
+        "candidate_class_name": "Location / address",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_LOC_PIN_CODE",
+            "rule_name": "Postal PIN Code / ZIP Code",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Postal PIN Code / ZIP Code | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "14***45",
+          "27***15",
+          "74***53",
+          "18***34"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": 36,
+        "retention_trigger": "Account Deletion",
+        "data_owner": "Logistics Team",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "customer_signups.csv::account_status",
+      "discovery": {
+        "source_name": "customer_signups.csv",
+        "table_name": null,
+        "column_name": "account_status",
+        "data_type": "object",
+        "total_records": 150,
+        "non_null_records": 150,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "digital_payments_log.csv::transaction_id",
+      "discovery": {
+        "source_name": "digital_payments_log.csv",
+        "table_name": null,
+        "column_name": "transaction_id",
+        "data_type": "object",
+        "total_records": 100,
+        "non_null_records": 100,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "digital_payments_log.csv::bank_account_number",
+      "discovery": {
+        "source_name": "digital_payments_log.csv",
+        "table_name": null,
+        "column_name": "bank_account_number",
+        "data_type": "int64",
+        "total_records": 100,
+        "non_null_records": 100,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_BANK_ACCOUNT",
+            "rule_name": "Bank Account Number / IBAN",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Bank Account Number / IBAN | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "9769-****-****-4401",
+          "1276-****-****-5955",
+          "5816-****-****-1814",
+          "5105-****-****-6142"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_PAYMENT_SETTLEMENT",
+        "purpose_name": "Payment Processing & Financial Ledger",
+        "retention_period_months": 84,
+        "retention_trigger": "Financial Year End",
+        "data_owner": "Banking Ops",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "digital_payments_log.csv::ifsc_code",
+      "discovery": {
+        "source_name": "digital_payments_log.csv",
+        "table_name": null,
+        "column_name": "ifsc_code",
+        "data_type": "object",
+        "total_records": 100,
+        "non_null_records": 100,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_IFSC",
+            "rule_name": "Indian Financial System Code (IFSC)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Indian Financial System Code (IFSC) | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "IC***11",
+          "UT***29",
+          "UT***71",
+          "KK***84"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_PAYMENT_SETTLEMENT",
+        "purpose_name": "Payment Processing & Financial Ledger",
+        "retention_period_months": 84,
+        "retention_trigger": "Financial Year End",
+        "data_owner": "Banking Ops",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "digital_payments_log.csv::card_number",
+      "discovery": {
+        "source_name": "digital_payments_log.csv",
+        "table_name": null,
+        "column_name": "card_number",
+        "data_type": "object",
+        "total_records": 100,
+        "non_null_records": 100,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_CARD_NUMBER",
+            "rule_name": "Payment Card Number (PAN / CC)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Payment Card Number (PAN / CC) | Header Pattern Match: True | Sample Match: 100/100 (100.0%) | Checksum Validator (luhn_checksum): Verified"
+          }
+        ],
+        "sample_preview_masked": [
+          "4790-****-****-3220",
+          "4773-****-****-9229",
+          "4904-****-****-6925",
+          "4136-****-****-2910"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": 24,
+        "retention_trigger": "Card Expiration",
+        "data_owner": "Payment Gateway",
+        "governance_status": "UNLINKED_PURPOSE"
+      },
+      "gaps": [
+        {
+          "gap_type": "MISSING_PURPOSE",
+          "severity": "HIGH",
+          "field_identifier": "digital_payments_log.csv::card_number",
+          "title": "Missing Declared Purpose for card_number",
+          "description": "Field 'card_number' is registered under digital_payments_log.csv but has no declared business processing purpose.",
+          "human_action_recommendation": "Privacy Steward Action: Assign and validate a declared business purpose prior to lawful processing verification."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "digital_payments_log.csv::upi_id",
+      "discovery": {
+        "source_name": "digital_payments_log.csv",
+        "table_name": null,
+        "column_name": "upi_id",
+        "data_type": "object",
+        "total_records": 100,
+        "non_null_records": 100,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_UPI",
+            "rule_name": "Unified Payments Interface (UPI ID / VPA)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Unified Payments Interface (UPI ID / VPA) | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "a***7@okaxis",
+          "a***6@ybl",
+          "a***5@upi",
+          "r***1@okaxis"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "digital_payments_log.csv::upi_id",
+          "title": "Unregistered Candidate PII in digital_payments_log.csv",
+          "description": "Field 'upi_id' was identified as candidate personal data (Financial information, confidence: 100%) across 100 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "digital_payments_log.csv::amount_inr",
+      "discovery": {
+        "source_name": "digital_payments_log.csv",
+        "table_name": null,
+        "column_name": "amount_inr",
+        "data_type": "int64",
+        "total_records": 100,
+        "non_null_records": 100,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.405,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_LOC_PIN_CODE",
+            "rule_name": "Postal PIN Code / ZIP Code",
+            "matched_by_header": false,
+            "matched_by_value": true,
+            "sample_match_count": 90,
+            "sample_total_count": 100,
+            "match_ratio": 0.9,
+            "confidence_contribution": 0.405,
+            "details": "Rule: Postal PIN Code / ZIP Code | Header Pattern Match: False | Sample Match: 90/100 (90.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "15***09",
+          "***",
+          "23***39"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "digital_payments_log.csv::settlement_channel",
+      "discovery": {
+        "source_name": "digital_payments_log.csv",
+        "table_name": null,
+        "column_name": "settlement_channel",
+        "data_type": "object",
+        "total_records": 100,
+        "non_null_records": 100,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "kyc_verification_records.csv::verification_id",
+      "discovery": {
+        "source_name": "kyc_verification_records.csv",
+        "table_name": null,
+        "column_name": "verification_id",
+        "data_type": "object",
+        "total_records": 120,
+        "non_null_records": 120,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "kyc_verification_records.csv::aadhaar_number",
+      "discovery": {
+        "source_name": "kyc_verification_records.csv",
+        "table_name": null,
+        "column_name": "aadhaar_number",
+        "data_type": "object",
+        "total_records": 120,
+        "non_null_records": 120,
+        "is_candidate_pii": true,
+        "candidate_class_id": "GID",
+        "candidate_class_name": "Government identifiers",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_GID_AADHAAR",
+            "rule_name": "Aadhaar Number (UIDAI)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Aadhaar Number (UIDAI) | Header Pattern Match: True | Sample Match: 100/100 (100.0%) | Checksum Validator (valid_aadhaar): Verified"
+          }
+        ],
+        "sample_preview_masked": [
+          "XXXX-XXXX-6228",
+          "XXXX-XXXX-9148",
+          "XXXX-XXXX-7606",
+          "XXXX-XXXX-4261"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_KYC_COMPLIANCE",
+        "purpose_name": "Statutory KYC & Customer Verification",
+        "retention_period_months": 60,
+        "retention_trigger": "Statutory Audit Window",
+        "data_owner": "Compliance Ops",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "kyc_verification_records.csv::pan_number",
+      "discovery": {
+        "source_name": "kyc_verification_records.csv",
+        "table_name": null,
+        "column_name": "pan_number",
+        "data_type": "object",
+        "total_records": 120,
+        "non_null_records": 120,
+        "is_candidate_pii": true,
+        "candidate_class_id": "GID",
+        "candidate_class_name": "Government identifiers",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_GID_PAN",
+            "rule_name": "Permanent Account Number (Indian PAN)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Permanent Account Number (Indian PAN) | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "FC***3V",
+          "AY***1B",
+          "JK***4N",
+          "QK***1S"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_KYC_COMPLIANCE",
+        "purpose_name": "Statutory KYC & Customer Verification",
+        "retention_period_months": 60,
+        "retention_trigger": "Statutory Audit Window",
+        "data_owner": "Tax Compliance",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "kyc_verification_records.csv::passport_number",
+      "discovery": {
+        "source_name": "kyc_verification_records.csv",
+        "table_name": null,
+        "column_name": "passport_number",
+        "data_type": "object",
+        "total_records": 120,
+        "non_null_records": 120,
+        "is_candidate_pii": true,
+        "candidate_class_id": "GID",
+        "candidate_class_name": "Government identifiers",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_GID_PASSPORT",
+            "rule_name": "Passport Number",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Passport Number | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "P5***84",
+          "B5***76",
+          "T8***92",
+          "R3***09"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_KYC_COMPLIANCE",
+        "purpose_name": "Statutory KYC & Customer Verification",
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": "Risk Team",
+        "governance_status": "INCOMPLETE"
+      },
+      "gaps": [
+        {
+          "gap_type": "MISSING_RETENTION",
+          "severity": "HIGH",
+          "field_identifier": "kyc_verification_records.csv::passport_number",
+          "title": "Missing Retention Schedule for passport_number",
+          "description": "Field 'passport_number' contains candidate personal data without a defined retention limit or deletion trigger.",
+          "human_action_recommendation": "Data Governance Action: Formulate data retention schedule and disposal trigger in accordance with corporate data retention policy."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "kyc_verification_records.csv::voter_id",
+      "discovery": {
+        "source_name": "kyc_verification_records.csv",
+        "table_name": null,
+        "column_name": "voter_id",
+        "data_type": "object",
+        "total_records": 120,
+        "non_null_records": 120,
+        "is_candidate_pii": true,
+        "candidate_class_id": "GID",
+        "candidate_class_name": "Government identifiers",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_GID_VOTER_ID",
+            "rule_name": "Voter ID / EPIC Number",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Voter ID / EPIC Number | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "ZX***85",
+          "MX***37",
+          "UG***18",
+          "QN***47"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "kyc_verification_records.csv::voter_id",
+          "title": "Unregistered Candidate PII in kyc_verification_records.csv",
+          "description": "Field 'voter_id' was identified as candidate personal data (Government identifiers, confidence: 100%) across 120 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "kyc_verification_records.csv::driving_licence",
+      "discovery": {
+        "source_name": "kyc_verification_records.csv",
+        "table_name": null,
+        "column_name": "driving_licence",
+        "data_type": "object",
+        "total_records": 120,
+        "non_null_records": 120,
+        "is_candidate_pii": true,
+        "candidate_class_id": "GID",
+        "candidate_class_name": "Government identifiers",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_GID_DRIVING_LICENCE",
+            "rule_name": "Driving Licence Number",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 100,
+            "sample_total_count": 100,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Driving Licence Number | Header Pattern Match: True | Sample Match: 100/100 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "MH-1-****-****-9508",
+          "KA-0-****-****-3501",
+          "MH-0-****-****-1229",
+          "MH-0-****-****-0319"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "kyc_verification_records.csv::driving_licence",
+          "title": "Unregistered Candidate PII in kyc_verification_records.csv",
+          "description": "Field 'driving_licence' was identified as candidate personal data (Government identifiers, confidence: 100%) across 120 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "kyc_verification_records.csv::kyc_audit_flag",
+      "discovery": {
+        "source_name": "kyc_verification_records.csv",
+        "table_name": null,
+        "column_name": "kyc_audit_flag",
+        "data_type": "object",
+        "total_records": 120,
+        "non_null_records": 120,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:employees::emp_id",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "employees",
+        "column_name": "emp_id",
+        "data_type": "INTEGER",
+        "total_records": 80,
+        "non_null_records": 80,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:employees::employee_name",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "employees",
+        "column_name": "employee_name",
+        "data_type": "TEXT",
+        "total_records": 80,
+        "non_null_records": 80,
+        "is_candidate_pii": true,
+        "candidate_class_id": "PID",
+        "candidate_class_name": "Personal identity",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_PID_NAME",
+            "rule_name": "Person Full/First/Last Name",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 80,
+            "sample_total_count": 80,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Person Full/First/Last Name | Header Pattern Match: True | Sample Match: 80/80 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "Po***ta",
+          "Aa***dy",
+          "Po***er",
+          "Ra***er"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_HR_PAYROLL",
+        "purpose_name": "Employee Payroll & Statutory Benefits",
+        "retention_period_months": 84,
+        "retention_trigger": "Termination of Employment",
+        "data_owner": "HR People Ops",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:employees::age",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "employees",
+        "column_name": "age",
+        "data_type": "INTEGER",
+        "total_records": 80,
+        "non_null_records": 80,
+        "is_candidate_pii": true,
+        "candidate_class_id": "PID",
+        "candidate_class_name": "Personal identity",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_PID_AGE",
+            "rule_name": "Person Age",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 80,
+            "sample_total_count": 80,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Person Age | Header Pattern Match: True | Sample Match: 80/80 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "***",
+          "***",
+          "***",
+          "***"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_HR_PAYROLL",
+        "purpose_name": "Employee Payroll & Statutory Benefits",
+        "retention_period_months": 84,
+        "retention_trigger": "Termination of Employment",
+        "data_owner": "HR Benefits",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:employees::pan_card",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "employees",
+        "column_name": "pan_card",
+        "data_type": "TEXT",
+        "total_records": 80,
+        "non_null_records": 80,
+        "is_candidate_pii": true,
+        "candidate_class_id": "GID",
+        "candidate_class_name": "Government identifiers",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_GID_PAN",
+            "rule_name": "Permanent Account Number (Indian PAN)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 80,
+            "sample_total_count": 80,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Permanent Account Number (Indian PAN) | Header Pattern Match: True | Sample Match: 80/80 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "DH***4F",
+          "UW***7Y",
+          "AL***3X",
+          "CJ***7T"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_HR_PAYROLL",
+        "purpose_name": "Employee Payroll & Statutory Benefits",
+        "retention_period_months": 84,
+        "retention_trigger": "Statutory Tax Filing",
+        "data_owner": "HR Finance",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:employees::salary_account_no",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "employees",
+        "column_name": "salary_account_no",
+        "data_type": "TEXT",
+        "total_records": 80,
+        "non_null_records": 80,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_BANK_ACCOUNT",
+            "rule_name": "Bank Account Number / IBAN",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 80,
+            "sample_total_count": 80,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Bank Account Number / IBAN | Header Pattern Match: True | Sample Match: 80/80 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "5171-****-****-3587",
+          "1536-****-****-6875",
+          "6985-****-****-6237",
+          "8709-****-****-1027"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_HR_PAYROLL",
+        "purpose_name": "Employee Payroll & Statutory Benefits",
+        "retention_period_months": 84,
+        "retention_trigger": "Termination of Employment",
+        "data_owner": "Finance Payroll",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:employees::bank_ifsc",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "employees",
+        "column_name": "bank_ifsc",
+        "data_type": "TEXT",
+        "total_records": 80,
+        "non_null_records": 80,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_IFSC",
+            "rule_name": "Indian Financial System Code (IFSC)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 80,
+            "sample_total_count": 80,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Indian Financial System Code (IFSC) | Header Pattern Match: True | Sample Match: 80/80 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "KK***86",
+          "PU***32",
+          "IC***01",
+          "SB***29"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_HR_PAYROLL",
+        "purpose_name": "Employee Payroll & Statutory Benefits",
+        "retention_period_months": 84,
+        "retention_trigger": "Termination of Employment",
+        "data_owner": "Finance Payroll",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:employees::department",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "employees",
+        "column_name": "department",
+        "data_type": "TEXT",
+        "total_records": 80,
+        "non_null_records": 80,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.4,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_PID_NAME",
+            "rule_name": "Person Full/First/Last Name",
+            "matched_by_header": false,
+            "matched_by_value": true,
+            "sample_match_count": 80,
+            "sample_total_count": 80,
+            "match_ratio": 1.0,
+            "confidence_contribution": 0.4,
+            "details": "Rule: Person Full/First/Last Name | Header Pattern Match: False | Sample Match: 80/80 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "Fi***ce",
+          "Hu***es",
+          "En***ng"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:delivery_dispatch::dispatch_id",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "delivery_dispatch",
+        "column_name": "dispatch_id",
+        "data_type": "TEXT",
+        "total_records": 90,
+        "non_null_records": 90,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:delivery_dispatch::delivery_address",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "delivery_dispatch",
+        "column_name": "delivery_address",
+        "data_type": "TEXT",
+        "total_records": 90,
+        "non_null_records": 90,
+        "is_candidate_pii": true,
+        "candidate_class_id": "LOC",
+        "candidate_class_name": "Location / address",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_LOC_POSTAL_ADDRESS",
+            "rule_name": "Physical Postal Address / Street",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 90,
+            "sample_total_count": 90,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Physical Postal Address / Street | Header Pattern Match: True | Sample Match: 90/90 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "497,-****-****-r 37",
+          "51, -****-****-r 22",
+          "307,-****-****-r 28",
+          "447,-****-****-r 37"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": 12,
+        "retention_trigger": "Delivery Confirmation",
+        "data_owner": "Logistics Fleet",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:delivery_dispatch::postal_pin",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "delivery_dispatch",
+        "column_name": "postal_pin",
+        "data_type": "TEXT",
+        "total_records": 90,
+        "non_null_records": 90,
+        "is_candidate_pii": true,
+        "candidate_class_id": "LOC",
+        "candidate_class_name": "Location / address",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_LOC_PIN_CODE",
+            "rule_name": "Postal PIN Code / ZIP Code",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 90,
+            "sample_total_count": 90,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Postal PIN Code / ZIP Code | Header Pattern Match: True | Sample Match: 90/90 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "73***03",
+          "59***42",
+          "19***30",
+          "16***47"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": 12,
+        "retention_trigger": "Delivery Confirmation",
+        "data_owner": "Logistics Fleet",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:delivery_dispatch::geo_coords",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "delivery_dispatch",
+        "column_name": "geo_coords",
+        "data_type": "TEXT",
+        "total_records": 90,
+        "non_null_records": 90,
+        "is_candidate_pii": true,
+        "candidate_class_id": "LOC",
+        "candidate_class_name": "Location / address",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_LOC_GEO_COORDS",
+            "rule_name": "Geographical Coordinates (Latitude / Longitude)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 90,
+            "sample_total_count": 90,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Geographical Coordinates (Latitude / Longitude) | Header Pattern Match: True | Sample Match: 90/90 (100.0%) | Checksum Validator (valid_geo_coords): Verified"
+          }
+        ],
+        "sample_preview_masked": [
+          "19.4-****-****-4477",
+          "26.0-****-****-3133",
+          "32.0-****-****-6715",
+          "22.7-****-****-1788"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_ORDER_FULFILLMENT",
+        "purpose_name": "Customer Order Fulfillment & Shipping",
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": "Fleet Telemetry",
+        "governance_status": "INCOMPLETE"
+      },
+      "gaps": [
+        {
+          "gap_type": "MISSING_RETENTION",
+          "severity": "HIGH",
+          "field_identifier": "enterprise_data.db:delivery_dispatch::geo_coords",
+          "title": "Missing Retention Schedule for geo_coords",
+          "description": "Field 'geo_coords' contains candidate personal data without a defined retention limit or deletion trigger.",
+          "human_action_recommendation": "Data Governance Action: Formulate data retention schedule and disposal trigger in accordance with corporate data retention policy."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:delivery_dispatch::order_upi",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "delivery_dispatch",
+        "column_name": "order_upi",
+        "data_type": "TEXT",
+        "total_records": 90,
+        "non_null_records": 90,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_UPI",
+            "rule_name": "Unified Payments Interface (UPI ID / VPA)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 90,
+            "sample_total_count": 90,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Unified Payments Interface (UPI ID / VPA) | Header Pattern Match: True | Sample Match: 90/90 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "n***8@upi",
+          "a***0@ybl",
+          "r***7@okaxis",
+          "v***4@paytm"
+        ]
+      },
+      "governance": {
+        "registered": true,
+        "purpose_id": "PURP_PAYMENT_SETTLEMENT",
+        "purpose_name": "Payment Processing & Financial Ledger",
+        "retention_period_months": 24,
+        "retention_trigger": "Dispute Window",
+        "data_owner": "Settlement Desk",
+        "governance_status": "ACTIVE"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:delivery_dispatch::package_weight_kg",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "delivery_dispatch",
+        "column_name": "package_weight_kg",
+        "data_type": "REAL",
+        "total_records": 90,
+        "non_null_records": 90,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::vault_id",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "vault_id",
+        "data_type": "INTEGER",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::aadhaar_card",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "aadhaar_card",
+        "data_type": "TEXT",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": true,
+        "candidate_class_id": "GID",
+        "candidate_class_name": "Government identifiers",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_GID_AADHAAR",
+            "rule_name": "Aadhaar Number (UIDAI)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 70,
+            "sample_total_count": 70,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Aadhaar Number (UIDAI) | Header Pattern Match: True | Sample Match: 70/70 (100.0%) | Checksum Validator (valid_aadhaar): Verified"
+          }
+        ],
+        "sample_preview_masked": [
+          "XXXX-XXXX-2941",
+          "XXXX-XXXX-8711",
+          "XXXX-XXXX-6013",
+          "XXXX-XXXX-1404"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "enterprise_data.db:legacy_unindexed_vault::aadhaar_card",
+          "title": "Unregistered Candidate PII in enterprise_data.db:legacy_unindexed_vault",
+          "description": "Field 'aadhaar_card' was identified as candidate personal data (Government identifiers, confidence: 100%) across 70 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::caller_phone",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "caller_phone",
+        "data_type": "TEXT",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": true,
+        "candidate_class_id": "CNT",
+        "candidate_class_name": "Contact information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_CNT_PHONE",
+            "rule_name": "Telephone / Mobile Number",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 70,
+            "sample_total_count": 70,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Telephone / Mobile Number | Header Pattern Match: True | Sample Match: 70/70 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "+91--****-****-9719",
+          "+91--****-****-0397",
+          "+91--****-****-9751",
+          "+91--****-****-9410"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "enterprise_data.db:legacy_unindexed_vault::caller_phone",
+          "title": "Unregistered Candidate PII in enterprise_data.db:legacy_unindexed_vault",
+          "description": "Field 'caller_phone' was identified as candidate personal data (Contact information, confidence: 100%) across 70 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::contact_email",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "contact_email",
+        "data_type": "TEXT",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": true,
+        "candidate_class_id": "CNT",
+        "candidate_class_name": "Contact information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_CNT_EMAIL",
+            "rule_name": "Email Address",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 70,
+            "sample_total_count": 70,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Email Address | Header Pattern Match: True | Sample Match: 70/70 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "s***5@company.org",
+          "r***6@mailservice.io",
+          "a***4@company.org",
+          "s***0@enterprise.net"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "enterprise_data.db:legacy_unindexed_vault::contact_email",
+          "title": "Unregistered Candidate PII in enterprise_data.db:legacy_unindexed_vault",
+          "description": "Field 'contact_email' was identified as candidate personal data (Contact information, confidence: 100%) across 70 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::card_number",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "card_number",
+        "data_type": "TEXT",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": true,
+        "candidate_class_id": "FIN",
+        "candidate_class_name": "Financial information",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_FIN_CARD_NUMBER",
+            "rule_name": "Payment Card Number (PAN / CC)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 70,
+            "sample_total_count": 70,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Payment Card Number (PAN / CC) | Header Pattern Match: True | Sample Match: 70/70 (100.0%) | Checksum Validator (luhn_checksum): Verified"
+          }
+        ],
+        "sample_preview_masked": [
+          "4865-****-****-8424",
+          "4857-****-****-7494",
+          "4548-****-****-9070",
+          "4151-****-****-1151"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "enterprise_data.db:legacy_unindexed_vault::card_number",
+          "title": "Unregistered Candidate PII in enterprise_data.db:legacy_unindexed_vault",
+          "description": "Field 'card_number' was identified as candidate personal data (Financial information, confidence: 100%) across 70 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::birth_date",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "birth_date",
+        "data_type": "TEXT",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": true,
+        "candidate_class_id": "PID",
+        "candidate_class_name": "Personal identity",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_PID_DOB",
+            "rule_name": "Date of Birth (DOB)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 70,
+            "sample_total_count": 70,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Date of Birth (DOB) | Header Pattern Match: True | Sample Match: 70/70 (100.0%)"
+          }
+        ],
+        "sample_preview_masked": [
+          "19***02",
+          "19***26",
+          "19***11",
+          "19***07"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "enterprise_data.db:legacy_unindexed_vault::birth_date",
+          "title": "Unregistered Candidate PII in enterprise_data.db:legacy_unindexed_vault",
+          "description": "Field 'birth_date' was identified as candidate personal data (Personal identity, confidence: 100%) across 70 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::geo_coordinates",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "geo_coordinates",
+        "data_type": "TEXT",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": true,
+        "candidate_class_id": "LOC",
+        "candidate_class_name": "Location / address",
+        "confidence_score": 1.0,
+        "evidence_checklist": [
+          {
+            "rule_id": "RULE_LOC_GEO_COORDS",
+            "rule_name": "Geographical Coordinates (Latitude / Longitude)",
+            "matched_by_header": true,
+            "matched_by_value": true,
+            "sample_match_count": 70,
+            "sample_total_count": 70,
+            "match_ratio": 1.0,
+            "confidence_contribution": 1.0,
+            "details": "Rule: Geographical Coordinates (Latitude / Longitude) | Header Pattern Match: True | Sample Match: 70/70 (100.0%) | Checksum Validator (valid_geo_coords): Verified"
+          }
+        ],
+        "sample_preview_masked": [
+          "24.8-****-****-5745",
+          "23.6-****-****-1187",
+          "19.5-****-****-7714",
+          "17.1-****-****-7554"
+        ]
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [
+        {
+          "gap_type": "UNREGISTERED_SHADOW_DATA",
+          "severity": "CRITICAL",
+          "field_identifier": "enterprise_data.db:legacy_unindexed_vault::geo_coordinates",
+          "title": "Unregistered Candidate PII in enterprise_data.db:legacy_unindexed_vault",
+          "description": "Field 'geo_coordinates' was identified as candidate personal data (Location / address, confidence: 100%) across 70 records, but has NO entry in the governance registry.",
+          "human_action_recommendation": "Human Review Required: Consult data owner to verify business necessity. If legitimate, register processing purpose and retention policy in RoPA. If obsolete, initiate data minimization or decommissioning."
+        }
+      ],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    },
+    {
+      "field_id": "enterprise_data.db:legacy_unindexed_vault::http_code",
+      "discovery": {
+        "source_name": "enterprise_data.db",
+        "table_name": "legacy_unindexed_vault",
+        "column_name": "http_code",
+        "data_type": "INTEGER",
+        "total_records": 70,
+        "non_null_records": 70,
+        "is_candidate_pii": false,
+        "candidate_class_id": null,
+        "candidate_class_name": null,
+        "confidence_score": 0.0,
+        "evidence_checklist": [],
+        "sample_preview_masked": []
+      },
+      "governance": {
+        "registered": false,
+        "purpose_id": null,
+        "purpose_name": null,
+        "retention_period_months": null,
+        "retention_trigger": null,
+        "data_owner": null,
+        "governance_status": "UNREGISTERED"
+      },
+      "gaps": [],
+      "disclaimer": "Technical evidence observation only. Not an automated lawful-basis decision, nor an inference of universal cross-border data transfer. Requires human privacy review."
+    }
+  ],
+  "evaluation": null
+}
